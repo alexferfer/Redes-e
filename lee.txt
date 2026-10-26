@@ -1,0 +1,93 @@
+1. Arranque del sistema y ARP Gratuito
+
+    main (practica2.py)
+
+    initEthernet (ethernet.py)
+
+    pcap_open_live (rc1_pcap.py)
+
+    initARP (arp.py)
+
+    registerCallback (ethernet.py)
+
+    ARPResolution (arp.py)
+
+    createARPRequest (arp.py)
+
+    sendEthernetFrame (ethernet.py)
+
+    pcap_inject (rc1_pcap.py)
+
+    initEthMsg (ethmsg.py)
+
+    registerCallback (ethernet.py)
+
+2. Resolución ARP explícita (a <IP>) — Emisión (Hilo principal)
+
+    ARPResolution (arp.py)
+
+    createARPRequest (arp.py)
+
+    sendEthernetFrame (ethernet.py)
+
+    pcap_inject (rc1_pcap.py)
+
+3. Recepción de ARP Reply — (Hilo receptor)
+
+    pcap_loop (rc1_pcap.py)
+
+    process_Ethernet_frame (ethernet.py)
+
+    process_arp_frame (arp.py)
+
+    processARPReply (arp.py)
+
+4. Recepción de ARP Request ajena y respuesta — (Hilo receptor)
+
+    pcap_loop (rc1_pcap.py)
+
+    process_Ethernet_frame (ethernet.py)
+
+    process_arp_frame (arp.py)
+
+    processARPRequest (arp.py)
+
+    createARPReply (arp.py)
+
+    sendEthernetFrame (ethernet.py)
+
+    pcap_inject (rc1_pcap.py)
+
+5. Envío de mensaje (m <IP> <mensaje>)
+
+    sendEthMsg (ethmsg.py)
+
+    ARPResolution (arp.py) (solo si no está en caché: createARPRequest → sendEthernetFrame → pcap_inject)
+
+    sendEthernetFrame (ethernet.py)
+
+    pcap_inject (rc1_pcap.py)
+
+6. Recepción de mensaje (0x0AA0) — (Hilo receptor)
+
+    pcap_loop (rc1_pcap.py)
+
+    process_Ethernet_frame (ethernet.py)
+
+    process_ethMsg_frame (ethmsg.py)
+
+7. Imprimir la caché (p)
+
+    printCache (arp.py)
+
+8. Cierre y salida limpia (q)
+
+    closeEthernet (ethernet.py)
+
+    pcap_breakloop (rc1_pcap.py)
+
+    join (threading.Thread)
+
+    pcap_close (rc1_pcap.py)
+
+arp.opcode == 1
